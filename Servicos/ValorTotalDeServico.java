@@ -52,24 +52,31 @@ public class ValorTotalDeServico{
         public void setPecasCompradas(String pecasCompradas) {
             this.PecasCompradas.add(pecasCompradas);
         }
-        public void setValorPecasCompradas(ArrayList<Double> valorPecasCompradas) {
-            this.valorPecasCompradas = valorPecasCompradas;
+        public void setValorPecasCompradas(Double valorPecasCompradas) {
+            this.valorPecasCompradas.add(valorPecasCompradas);
         }
         public void setDescricaoDoServicoPrestado(String descricaoDoServicoPrestado) {
             this.DescricaoDoServicoPrestado = descricaoDoServicoPrestado;
         }
-        public void setQuantidadeDePecas(ArrayList<Double> quantidadeDePecas) {
-            QuantidadeDePecas = quantidadeDePecas;
+        public void setQuantidadeDePecas(Double quantidadeDePecas) {
+            this.QuantidadeDePecas.add(quantidadeDePecas);
         }
 
         
 
         // MÉTODOS
-        public Double CalculoDoPreco(Double qtdHorasTrabalhadas, Double valorDasHoras, Double[] valorDasPecasCompradas){
+        public Double CalculoDoPreco(Double qtdHorasTrabalhadas, Double valorDasHoras, ArrayList<Double> valorDasPecasCompradas, ArrayList<Double> quantidadeDePecasCompradas){
+            Double resultado = 0.0;
             qtdHorasTrabalhadas = this.HorasTrabalhadas;
             valorDasHoras = this.valorHoras;
+
+            if(!valorDasPecasCompradas.isEmpty() && !quantidadeDePecasCompradas.isEmpty()){
+                for(int i = 0; i < valorDasPecasCompradas.size(); i++){
+                    resultado += valorDasPecasCompradas.get(i) * quantidadeDePecasCompradas.get(i);
+                }
+            }
     
-            this.valorACobrar =  qtdHorasTrabalhadas * valorDasHoras;
+            this.valorACobrar =  (qtdHorasTrabalhadas * valorDasHoras) + resultado;
     
             return valorACobrar;
         }

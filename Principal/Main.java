@@ -21,20 +21,33 @@ public class Main{
             System.out.println("Algum gasto com pecas? (S/N)");
             resposta = sc.nextLine().toLowerCase();
 
-            if(resposta == "s"){
+            if("s".equals(resposta)){
                 String pecaComprada;
-                String ValorPecaComprada;
-                String QuantidadePecaComprada;
+                Double ValorPecaComprada;
+                Double QuantidadePecaComprada;
+
+                String menu;
                 do { 
                     System.out.println("O que foi comprado? ");
                     pecaComprada = sc.nextLine();
-                    valorTotal.setPecasCompradas();
-                } while (true);
+                    valorTotal.setPecasCompradas(pecaComprada);
+                    
+                    System.out.println("Qual o valor da peça? ");
+                    ValorPecaComprada = sc.nextDouble();
+                    valorTotal.setValorPecasCompradas(ValorPecaComprada);
+                    
+                    System.out.println("Qual a quantidade comprada? ");
+                    QuantidadePecaComprada = sc.nextDouble();
+                    valorTotal.setQuantidadeDePecas(QuantidadePecaComprada);
+
+                    System.out.println("Para Encerrar digite 'N', para continuar adicionando digite 'S'");
+                    menu = sc.nextLine().toLowerCase();
+
+                } while ("s".equals(menu));
             }
             
-            Double[] var = {2.3,1.0};
 
-            valorTotal.CalculoDoPreco(horasTrabalhadas, valorTotal.getValorHoras(), var);
+            valorTotal.CalculoDoPreco(horasTrabalhadas, valorTotal.getValorHoras(), valorTotal.getValorPecasCompradas(), valorTotal.getQuantidadeDePecas());
             System.out.println(valorTotal);
                 
         } catch (Exception e) {
