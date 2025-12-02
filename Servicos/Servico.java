@@ -3,6 +3,8 @@ package Servicos;
 import Clientes.Clientes;
 import java.util.ArrayList;
 
+// COLOCAR PARAMETRO DE DATA (fazer vincular: cliente, data, descrição servico os valores totais e de peças (caso tenha)).
+
 public class Servico{
 
         // PARAMETROS
@@ -85,7 +87,7 @@ public class Servico{
     
             return valorACobrar;
         }
-        
+
         
         // RETORNO
         @Override
