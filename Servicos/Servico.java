@@ -1,10 +1,12 @@
 package Servicos;
 
+import Clientes.Clientes;
 import java.util.ArrayList;
 
-public class ValorTotalDeServico{
+public class Servico{
 
         // PARAMETROS
+        private int ID;
         private Double valorACobrar;
         private Double HorasTrabalhadas;
         private Double valorHoras;
@@ -12,12 +14,13 @@ public class ValorTotalDeServico{
         private ArrayList<Double> valorPecasCompradas = new ArrayList<>();
         private ArrayList<Double> QuantidadeDePecas = new ArrayList<>();
         private String DescricaoDoServicoPrestado;
+        private Clientes ClienteVisitado;
     
         //Construtores
-        public ValorTotalDeServico() {
+        public Servico() {
         }
     
-        public ValorTotalDeServico(Double HorasTrabalhadas, Double valorHoras){
+        public Servico(Double HorasTrabalhadas, Double valorHoras){
             this.HorasTrabalhadas = HorasTrabalhadas;
             this.valorHoras = valorHoras;
         }
@@ -61,8 +64,10 @@ public class ValorTotalDeServico{
         public void setQuantidadeDePecas(Double quantidadeDePecas) {
             this.QuantidadeDePecas.add(quantidadeDePecas);
         }
-
-        
+        public void setClienteVisitado(Clientes ClienteVisitado) {
+            this.ClienteVisitado = ClienteVisitado;
+        }
+                
 
         // MÉTODOS
         public Double CalculoDoPreco(Double qtdHorasTrabalhadas, Double valorDasHoras, ArrayList<Double> valorDasPecasCompradas, ArrayList<Double> quantidadeDePecasCompradas){
@@ -81,11 +86,13 @@ public class ValorTotalDeServico{
             return valorACobrar;
         }
         
+        
         // RETORNO
         @Override
         public String toString() {
         return "Valor total a ser cobrado pelos serviços: R$" + valorACobrar;
         }
+
     }
     
 

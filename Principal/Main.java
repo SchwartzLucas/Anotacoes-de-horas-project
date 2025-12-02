@@ -1,13 +1,13 @@
 package Principal;
 
-import Servicos.ValorTotalDeServico;
+import Servicos.Servico;
 import java.util.Scanner;
 
 public class Main{
 
     public static void main(String[] args){
         try {
-            ValorTotalDeServico valorTotal = new ValorTotalDeServico();
+            Servico valorTotal = new Servico();
     
             Scanner sc = new Scanner(System.in);
             System.out.println("Quantas horas foram trabalhadas? ");
@@ -22,28 +22,23 @@ public class Main{
             resposta = sc.nextLine().toLowerCase();
 
             if("s".equals(resposta)){
-                String pecaComprada;
-                Double ValorPecaComprada;
-                Double QuantidadePecaComprada;
 
-                String menu;
-                do { 
+                String menu = "s";
+                while ("s".equals(menu.toLowerCase())){
                     System.out.println("O que foi comprado? ");
-                    pecaComprada = sc.nextLine();
-                    valorTotal.setPecasCompradas(pecaComprada);
+                    valorTotal.setPecasCompradas(sc.nextLine());
                     
                     System.out.println("Qual o valor da peça? ");
-                    ValorPecaComprada = sc.nextDouble();
-                    valorTotal.setValorPecasCompradas(ValorPecaComprada);
+                    valorTotal.setValorPecasCompradas(Double.parseDouble(sc.nextLine()));
+                    System.out.println("Valor das peças: " + valorTotal.getValorPecasCompradas());
                     
                     System.out.println("Qual a quantidade comprada? ");
-                    QuantidadePecaComprada = sc.nextDouble();
-                    valorTotal.setQuantidadeDePecas(QuantidadePecaComprada);
+                    valorTotal.setQuantidadeDePecas(Double.parseDouble(sc.nextLine()));
+                    System.out.println("Quantidade de peças: " + valorTotal.getQuantidadeDePecas());
 
                     System.out.println("Para Encerrar digite 'N', para continuar adicionando digite 'S'");
-                    menu = sc.nextLine().toLowerCase();
-
-                } while ("s".equals(menu));
+                    menu = sc.nextLine();
+                }
             }
             
 
@@ -51,6 +46,7 @@ public class Main{
             System.out.println(valorTotal);
                 
         } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
     }
 }
